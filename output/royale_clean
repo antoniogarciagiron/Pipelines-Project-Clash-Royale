@@ -1,0 +1,96 @@
+,name,elixir,cardtype,hitpoints14,max_hitpoints_per_elixir,damage14,max_damage_per_elixir
+0,Skeletons,1,Common,108.0,108.0,324.0,324.0
+1,Ice Spirit,1,Common,305.0,305.0,145.0,145.0
+2,Heal,1,Spell,0.0,0.0,0.0,0.0
+3,Goblins,2,Common,267.0,133.5,477.0,238.5
+4,Spear Goblins,2,Common,176.0,88.0,324.0,162.0
+5,Zap,2,Spell,0.0,0.0,254.0,127.0
+6,Bats,2,Common,108.0,54.0,540.0,270.0
+7,Fire Spirits,2,Common,145.0,72.5,852.0,426.0
+8,Giant Snowball,2,Spell,0.0,0.0,254.0,127.0
+9,Ice Golem,2,Rare,1587.0,793.5,112.0,56.0
+10,Wall Breakers,2,Epic,438.0,219.0,1276.0,638.0
+11,Barbarian Barrel,2,Spell,0.0,0.0,296.0,148.0
+12,Rage,2,Spell,0.0,0.0,0.0,0.0
+13,The Log,2,Spell,0.0,0.0,384.0,192.0
+14,Archers,3,Common,403.0,134.3,284.0,94.7
+15,Arrows,3,Spell,0.0,0.0,389.0,129.7
+16,Knight,3,Common,2210.0,736.7,267.0,89.0
+17,Minions,3,Common,305.0,101.7,405.0,135.0
+18,Bomber,3,Common,637.0,212.3,433.0,144.3
+19,Cannon,3,Common,1186.0,395.3,267.0,89.0
+20,Skeleton Barrel,3,Common,1017.0,339.0,176.0,58.7
+21,Goblin Gang,3,Common,384.0,128.0,693.0,231.0
+22,Tombstone,3,Rare,0.0,0.0,0.0,0.0
+23,Mega Minion,3,Rare,1109.0,369.7,413.0,137.7
+24,Dart Goblin,3,Rare,345.0,115.0,160.0,53.3
+25,Earthquake,3,Rare,294.0,98.0,1176.0,392.0
+26,Elixir Golem,3,Rare,2248.0,749.3,337.0,112.3
+27,Skeleton Army,3,Epic,108.0,36.0,1620.0,540.0
+28,Goblin Barrel,3,Common,267.0,89.0,477.0,159.0
+29,Tornado,3,Spell,0.0,0.0,224.0,74.7
+30,Guards,3,Epic,318.0,106.0,144.0,48.0
+31,Clone,3,Legendary,,,,
+32,Miner,3,Legendary,1600.0,533.3,256.0,85.3
+33,Princess,3,Legendary,345.0,115.0,224.0,74.7
+34,Ice Wizard,3,Legendary,944.0,314.7,120.0,40.0
+35,Bandit,3,Legendary,1200.0,400.0,256.0,85.3
+36,Fisherman,3,Legendary,1280.0,426.7,256.0,85.3
+37,Royal Ghost,3,Legendary,1600.0,533.3,345.0,115.0
+38,Mortar,4,Common,1949.0,487.2,352.0,88.0
+39,Tesla,4,Common,1525.0,381.2,305.0,76.2
+40,Fireball,4,Rare,913.0,228.2,320.0,80.0
+41,Mini P.E.K.K.A,4,Rare,1804.0,451.0,955.0,238.8
+42,Musketeer,4,Rare,955.0,238.8,289.0,72.2
+43,Hog Rider,4,Rare,2248.0,562.0,421.0,105.2
+44,Valkyrie,4,Rare,2641.0,660.2,354.0,88.5
+45,Battle Ram,4,Rare,1208.0,302.0,351.0,87.8
+46,Furnace,4,Rare,0.0,0.0,0.0,0.0
+47,Flying Machine,4,Rare,814.0,203.5,227.0,56.8
+48,Bomb Tower,4,Rare,1798.0,449.5,295.0,73.8
+49,Zappies,4,Rare,702.0,175.5,336.0,84.0
+50,Goblin Cage,4,Rare,0.0,0.0,0.0,0.0
+51,Baby Dragon,4,Epic,1696.0,424.0,212.0,53.0
+52,Hunter,4,Epic,1110.0,277.5,1123.0,280.8
+53,Poison,4,Epic,960.0,240.0,336.0,84.0
+54,Dark Prince,4,Epic,318.0,79.5,1643.0,410.8
+55,Freeze,4,Epic,152.0,38.0,54.0,13.5
+56,Magic Archer,4,Legendary,784.0,196.0,177.0,44.2
+57,Night Witch,4,Legendary,1200.0,300.0,416.0,104.0
+58,Inferno Dragon,4,Legendary,1712.0,428.0,48.0,12.0
+59,Lumberjack,4,Legendary,1696.0,424.0,320.0,80.0
+60,Electro Wizard,4,Legendary,944.0,236.0,307.0,76.8
+61,Barbarians,5,Common,888.0,177.6,1270.0,254.0
+62,Minion Horde,5,Common,305.0,61.0,810.0,162.0
+63,Rascals,5,Common,0.0,0.0,0.0,0.0
+64,Giant,5,Rare,5229.0,1045.8,337.0,67.4
+65,Goblin Hut,5,Rare,0.0,0.0,0.0,0.0
+66,Inferno Tower,5,Rare,2318.0,463.6,56.0,11.2
+67,Wizard,5,Rare,955.0,191.0,370.0,74.0
+68,Royal Hogs,5,Rare,1109.0,221.8,356.0,71.2
+69,Prince,5,Epic,2575.0,515.0,519.0,103.8
+70,Witch,5,Epic,1110.0,222.0,351.0,70.2
+71,Balloon,5,Epic,2226.0,445.2,1272.0,254.4
+72,Bowler,5,Epic,2544.0,508.8,381.0,76.2
+73,Cannon Cart,5,Epic,1182.0,236.4,1182.0,236.4
+74,Electro Dragon,5,Epic,1259.0,251.8,254.0,50.8
+75,Executioner,5,Epic,1530.0,306.0,818.0,163.6
+76,Ram Rider,5,Legendary,2337.0,467.4,352.0,70.4
+77,Graveyard,5,Common,576.0,115.2,1728.0,345.6
+78,Royal Giant,6,Common,4068.0,678.0,406.0,67.7
+79,Elite Barbarians,6,Common,1552.0,258.7,962.0,160.3
+80,Rocket,6,Spell,0.0,0.0,1967.0,327.8
+81,Elixir Collector,6,Rare,0.0,0.0,0.0,0.0
+82,Giant Skeleton,6,Epic,4452.0,742.0,275.0,45.8
+83,Lightning,6,Spell,0.0,0.0,1399.0,233.2
+84,X-Bow,6,Epic,2204.0,367.3,42.0,7.0
+85,Goblin Giant,6,Epic,4170.0,695.0,233.0,38.8
+86,Sparky,6,Legendary,1920.0,320.0,1760.0,293.3
+87,Royal Recruits,7,Common,318.0,45.4,705.0,100.7
+88,Barbarian Hut,7,Rare,0.0,0.0,0.0,0.0
+89,P.E.K.K.A,7,Epic,4982.0,711.7,1081.0,154.4
+90,Lava Hound,7,Legendary,5040.0,720.0,72.0,10.3
+91,Mega Knight,7,Legendary,5280.0,754.3,355.0,50.7
+92,Golem,8,Epic,6784.0,848.0,413.0,51.6
+93,Three Musketeers,9,Rare,955.0,106.1,867.0,96.3
+94,Mirror,0,Spell,,0.0,,0.0
