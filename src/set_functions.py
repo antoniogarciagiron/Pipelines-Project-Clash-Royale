@@ -3,6 +3,9 @@ import pandas as pd
 import sys
 import re
 import numpy as np
+import requests
+from bs4 import BeautifulSoup
+import json
 
 def download_dataset():
     '''Downloads a dataset from kaggle and only keeps the csv in your data file. Beware of your own data structure:
@@ -68,5 +71,56 @@ def clean_clash_dataset():
     #Return a clean table
     final_royale = royale[["name", "elixir", "cardtype", "hitpoints14", "max_hitpoints_per_elixir", "damage14", "max_damage_per_elixir"]]
     return final_royale.to_csv("royale_clean", sep=',')
+
+def get_deck (soup):
+    listdeck = soup.select("div.popularDecks__decklist")[0]
+    grouplist=listdeck.find_all("a")
+    links=[]
+    for item in grouplist:
+        link = item.get("href")
+        links.append(link)
+    deck = []
+    for link in links:
+        separated = link.split("/")
+        card = separated[-1]
+        card = card.replace("+", " ")
+        deck.append(card)
+    return deck
+
+def get_wins (soup):
+    wins = soup.select("div.popularDecks__footer div.ui__headerBig")[0]
+    ratiowin = float(wins.text.strip()[:-1])
+    return ratiowin
+
+def get_crowns (soup):
+    crowns = soup.select("div.popularDecks__footer div.ui__mediumText")[1]
+    ratiocrowns = float(crowns.text.split(" ")[0])
+    return ratiocrowns
+
+def get_info(soup):
+    deck = get_deck(soup)
+    wins = get_wins(soup)
+    crowns = get_crowns(soup)
+    fullinfo = []
+    for card in deck:
+        fullinfo.append(card)
+    fullinfo.append(wins)
+    fullinfo.append(crowns)
+    return fullinfo
+
+def get_all_sets():
+    url = "https://statsroyale.com/decks/popular?type=tournament"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content)
+    card_sets = soup.select("div.popularDecks_deckWrapper")
+
+    #Apply the functions to get the cards and the victory and crown ratios
+    all_decks = [get_info(deck) for deck in card_sets]
+
+    #Transform into Pandas dataset
+    df = pd.DataFrame(all_decks)
+    df.columns = ["card_1", "card_2", "card_3", "card_4", "card_5", "card_6", "card_7", "card_8", "victory_ratio", "crowns_ratio"]
+    return df.to_csv("final_decks_list", sep=',')
+    
 
 
