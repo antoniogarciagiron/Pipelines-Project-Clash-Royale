@@ -219,7 +219,7 @@ def obtain_info_from_card_list(best_decks, cards):
                     total_hitpoints += card_name[2]
                     total_damage += card_name[3]
         if counter == 8: 
-            deck_stats.append([counter, total_elixir, round(total_elixir/8, 2), total_hitpoints, total_damage, total_hitpoints/8, total_damage/8])
+            deck_stats.append([counter, total_elixir, round(total_elixir/8, 2), total_hitpoints, total_damage, round(total_hitpoints/8, 2), round(total_damage/8, 2)])
         else:    
             deck_stats.append([counter, 0, 0, 0, 0, 0, 0])
     
