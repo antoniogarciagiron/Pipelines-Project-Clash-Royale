@@ -123,4 +123,63 @@ def get_all_sets():
     return df.to_csv("final_decks_list", sep=',')
     
 
+def obtain_info_from_decks(best_decks, cards):
 
+    #Creates a list with the cards, victory ratio and crowns ratio for each deck in the top 50
+    individual_decks = best_decks.apply(lambda x: [[x.card_1, x.card_2, x.card_3, x.card_4, x.card_5, x.card_6, x.card_7, x.card_8], x.victory_ratio, x.crowns_ratio], axis=1)
+
+    #This iterates all cards in the game and checks if the card appears in one deck. Counts the number of times the card is used and calculates de average victory and crown ratios
+    card_use=[]
+    for card in cards["name"]:
+        counter = 0
+        victory = 0
+        crown = 0
+        for deck in individual_decks:
+            if card in deck[0]:
+                counter += 1
+                victory += deck[1]
+                crown += deck[2]
+        if counter != 0:
+            card_use.append([card, counter, round(victory/counter, 2), round(crown/counter, 2)])
+        else:
+            card_use.append([card, 0, 0, 0])
+
+    #Transforms the result into a Pandas dataframe and joins the original cards dataframe with the info obtained from the decks dataframe
+    usage = pd.DataFrame(card_use)
+    usage.columns = ["name_2", "Use", "Victory_ratio", "Crowns_ratio"]
+    usage = usage.drop("name_2", axis = 1)
+    cards = cards.join(usage, how = "right")
+    return cards
+
+def obtain_info_from_card_list(best_decks, cards):
+
+    #Creates a two lists from both tables with the elements to iterate
+    individual_decks = best_decks.apply(lambda x: [[x.card_1, x.card_2, x.card_3, x.card_4, x.card_5, x.card_6, x.card_7, x.card_8], x.victory_ratio, x.crowns_ratio], axis=1)
+    cards["name"] = cards["name"].astype(str)
+    card_list = cards.apply(lambda x: [x["name"], x.elixir, x.hitpoints14, x.damage14], axis=1)
+
+    #Iterates all the elements of each deck and checks if all the 8 cards are in the list of cards (There are new cards and the list is from 2020)
+    #It calculates que total an average values of the deck for: elixir, damage, hitpoints. If the 8 cards are in the list, it adds the values. Otherwise it drops all 0s to the element
+    deck_stats = []
+    for deck in individual_decks:
+        total_elixir = 0
+        total_hitpoints = 0
+        total_damage = 0
+        counter = 0
+        for card in deck[0]:
+            for card_name in card_list:
+                if card == card_name[0]:
+                    counter += 1
+                    total_elixir += card_name[1]
+                    total_hitpoints += card_name[2]
+                    total_damage += card_name[3]
+        if counter == 8: 
+            deck_stats.append([counter, total_elixir, round(total_elixir/8, 2), total_hitpoints, total_damage, total_hitpoints/8, total_damage/8])
+        else:    
+            deck_stats.append([counter, 0, 0, 0, 0, 0, 0])
+    
+    #Adds the new calculated values to the deck table
+    deck_stats_list = pd.DataFrame(deck_stats)
+    deck_stats_list.columns = ["cards_in_list", "total_elixir", "average_elixir", "total_hitpoints", "total_damage", "average_hitpoints", "average_damage"]
+    best_decks = best_decks.join(deck_stats_list, how = "right")
+    return best_decks
