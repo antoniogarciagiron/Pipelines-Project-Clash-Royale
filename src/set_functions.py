@@ -46,7 +46,11 @@ def download_dataset():
             return os.system(delete)
 
 def clean_clash_dataset():
-
+    '''Takes the csv file as downloaded from Kaggle, creates new columns with the card types, 
+    average values for the cards hitpoints and damage per elixir and creates a clean table.
+    Takes: the csv file with the cards
+    Returns: the clean csv file
+    '''
 
     #Opens the file with Pandas
     sys.path.append("../")
@@ -73,6 +77,11 @@ def clean_clash_dataset():
     return final_royale.to_csv("royale_clean", sep=',')
 
 def get_deck (soup):
+    '''Obtains the deck of 8 cards from the selected website and adds the card names to a list.
+    Takes: the soup file from the selected website
+    Returns: a list with 8 card names
+    '''
+
     listdeck = soup.select("div.popularDecks__decklist")[0]
     grouplist=listdeck.find_all("a")
     links=[]
@@ -88,16 +97,35 @@ def get_deck (soup):
     return deck
 
 def get_wins (soup):
+    '''Obtains the win ratio for a selected deck.
+    Takes: the soup file from the selected website
+    Returns: the win ratio value
+    '''
+
     wins = soup.select("div.popularDecks__footer div.ui__headerBig")[0]
     ratiowin = float(wins.text.strip()[:-1])
     return ratiowin
 
 def get_crowns (soup):
+    '''Obtains the crowns ratio for a selected deck. 
+    The target of the game is to destroy the deffensive towers of the opponent. 
+    Each tower down gives a crown. 
+    Destroying the King's tower wins the battle and gives 3 crowns.
+    Takes: the soup file from the selected website
+    Returns: the crowns ratio value
+    '''
+
     crowns = soup.select("div.popularDecks__footer div.ui__mediumText")[1]
     ratiocrowns = float(crowns.text.split(" ")[0])
     return ratiocrowns
 
 def get_info(soup):
+    '''Uses get_deck, get_wins and get_crowns functions to obtain and merge together the cards of a selected deck, the average wins and the average crowns.
+    Takes: NaN
+    Returns: a list with the information of a selected deck
+    '''
+
+
     deck = get_deck(soup)
     wins = get_wins(soup)
     crowns = get_crowns(soup)
@@ -109,6 +137,11 @@ def get_info(soup):
     return fullinfo
 
 def get_all_sets():
+    '''Uses get_info to obtain all the 50 top used decks from the website with their related information and creates a new table.
+    Takes: an url from the website with the 50 top used decks in Clash Royale
+    Returns: a csv file with the most used decks in Clash Royale and their information
+    '''
+
     url = "https://statsroyale.com/decks/popular?type=tournament"
     response = requests.get(url)
     soup = BeautifulSoup(response.content)
@@ -124,11 +157,17 @@ def get_all_sets():
     
 
 def obtain_info_from_decks(best_decks, cards):
+    '''Takes information from the top decks list and the cards list. 
+    Calculates the number of times the card is used, the average victory and crown ratio of each card.
+    Takes: two Pandas files, one with the top decks and another with the cards information
+    Returns: a Pandas file with the cards, enriched with more information
+    '''
+
 
     #Creates a list with the cards, victory ratio and crowns ratio for each deck in the top 50
     individual_decks = best_decks.apply(lambda x: [[x.card_1, x.card_2, x.card_3, x.card_4, x.card_5, x.card_6, x.card_7, x.card_8], x.victory_ratio, x.crowns_ratio], axis=1)
 
-    #This iterates all cards in the game and checks if the card appears in one deck. Counts the number of times the card is used and calculates de average victory and crown ratios
+    #This iterates all cards in the game and checks if the card appears in one deck. Counts the number of times the card is used and calculates the average victory and crown ratios
     card_use=[]
     for card in cards["name"]:
         counter = 0
@@ -152,6 +191,12 @@ def obtain_info_from_decks(best_decks, cards):
     return cards
 
 def obtain_info_from_card_list(best_decks, cards):
+    '''Takes information from the top decks list and the cards list. 
+    Calculates the total and average values of elixir, hitpoints and damage for each deck and adds it to the file.
+    Takes: two Pandas files, one with the top decks and another with the cards information
+    Returns: a Pandas file with the top used decks, enriched with more information
+    '''
+
 
     #Creates a two lists from both tables with the elements to iterate
     individual_decks = best_decks.apply(lambda x: [[x.card_1, x.card_2, x.card_3, x.card_4, x.card_5, x.card_6, x.card_7, x.card_8], x.victory_ratio, x.crowns_ratio], axis=1)
