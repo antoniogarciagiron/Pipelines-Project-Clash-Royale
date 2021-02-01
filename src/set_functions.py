@@ -15,7 +15,7 @@ def download_dataset():
     '''
     
     #Gets the name of the dataset.zip
-    url = input("Introduce la url: ")
+    url = "https://www.kaggle.com/rodsaldanha/clash-royale-matches"
     
     #Gets the name of the dataset.zip
     endopint = url.split("/")[-1]

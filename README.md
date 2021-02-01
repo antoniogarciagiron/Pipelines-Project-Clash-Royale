@@ -15,8 +15,8 @@ Each card has an elixir' cost to be summoned, a number of hitpoints the card res
 
 ## Data:
 
-- A dataset was taken from [Kaggle](https://www.kaggle.com/rodsaldanha/clash-royale-matches), containing information about the cards available in the game Clash Royale. The process is carried out in the file "01 Extracting csv.ipynb".
-- The aditional information was found from a [website](https://statsroyale.com/decks/popular?type=tournament) by means of web scraping, and was related to the most popular card combinations for tournaments in the game. The process is carried out in the file "02 Extracting data from the web.ipynb".
+- A dataset was taken from [Kaggle](https://www.kaggle.com/rodsaldanha/clash-royale-matches), containing information about the cards available in the game Clash Royale. The process can be directly executed with the python file "01_download_and_clean.py".
+- The aditional information was found from a [website](https://statsroyale.com/decks/popular?type=tournament) by means of web scraping, and was related to the most popular card combinations for tournaments in the game. The process is can be executed with the python file "02_get_data_from_web.py".
 - A set of functions were created following a data pipeline process, in order to clean and merge both datasets. Functions can be found in the "set_functions.py" file, in the src folder.
 - The data is analysed and conclusions obtained. The process is carried out in the file "03 Merging data and obtaining conclusions.ipynb".
 
